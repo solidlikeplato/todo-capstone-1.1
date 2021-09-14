@@ -11,12 +11,14 @@
 #### Local installation:
 1. Clone the repository onto your local machine
 2. run ```bundle install``` to install all dependencies
-3. run ```rails s```
-4. the server will be running on ```localhost:3000```
+3. run ```rake db:setup```
+4. run ```rails s```
+5. the server will be running on ```localhost:3000```
 #### Running tests locally:
 
 ## Description:
 Currently has a Welcome page
+There is also a single item visible at `/todo_items/1`
 
 
 ## Deployment
