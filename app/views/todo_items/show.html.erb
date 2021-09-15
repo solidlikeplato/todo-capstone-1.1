@@ -1,15 +1,18 @@
 <p>
-  <strong>  <%= @todo_item.title %> </strong>
+  <strong> <H1> <%= @todo_item.title %> </h1> </strong>
 </p>
 
+<%= button_to "Update Title", change_title_todo_item_path(@todo_item.id), method: :get %>
+
 <p>
-  Author: <%= @todo_item.author %> 
+<strong>Author:</strong> <%= @todo_item.author %> 
 <p>
 
 <p>
-  Status: <%= link_to @todo_item.is_done ? "done" : "not done", change_status_todo_item_path(@todo_item.id), method: :patch %> 
+  <strong>Status:</strong> <%= link_to @todo_item.is_done ? "done" : "not done", change_status_todo_item_path(@todo_item.id), method: :patch %> 
 <p>
 
-<p>
+<p >
   <%= @todo_item.description %> 
 <p>
+<%= button_to "Update description", change_description_todo_item_path(@todo_item.id), method: :get %>
