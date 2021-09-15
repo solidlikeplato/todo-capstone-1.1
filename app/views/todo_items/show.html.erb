@@ -7,7 +7,7 @@
 <p>
 
 <p>
-  Status: <%= @todo_item.is_done %> 
+  Status: <%= link_to @todo_item.is_done ? "done" : "not done", change_status_todo_item_path(@todo_item.id), method: :patch %> 
 <p>
 
 <p>

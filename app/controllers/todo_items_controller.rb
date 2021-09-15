@@ -4,6 +4,11 @@ class TodoItemsController < ApplicationController
   def show
   end
 
+  def change_status
+    @todo_item.update_attribute(:is_done, !@todo_item.is_done)
+    redirect_to @todo_item
+  end
+
   private
   def set_todo_item
     @todo_item = TodoItem.find(params[:id])
