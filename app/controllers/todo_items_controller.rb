@@ -4,6 +4,11 @@ class TodoItemsController < ApplicationController
   def show
   end
 
+  def update
+    @todo_item.update!(todo_item_params)
+    redirect_to @todo_item
+  end
+
   def change_status
     @todo_item.update_attribute(:is_done, !@todo_item.is_done)
     redirect_to @todo_item
@@ -15,7 +20,7 @@ class TodoItemsController < ApplicationController
   end
 
   def todo_item_params
-    params[:todo_item].permit(:title, :description, :author, :is_done)
+    params.permit(:title, :description, :author, :is_done)
   end
 
 end
