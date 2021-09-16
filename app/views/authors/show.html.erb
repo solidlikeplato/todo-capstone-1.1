@@ -10,3 +10,5 @@
 <div id="todo_items_wrapper">
  <%= render @author.todo_items %>
 </div>
+
+<%= button_to "New Item", new_author_todo_item_path(@author), method: :get %>

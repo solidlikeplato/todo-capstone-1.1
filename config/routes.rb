@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :authors do
+    resources :todo_items
   end
 
   resources :todo_items do
