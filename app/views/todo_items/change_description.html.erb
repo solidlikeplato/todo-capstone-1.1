@@ -1,0 +1,11 @@
+<p>
+  <strong>  Updating the description for <%= @todo_item.title %> </strong>
+</p>
+
+<%= form_with(url: todo_item_path, method: "PATCH", model: @todo_item) do |form| %>
+  <%= form.text_area :description %>
+  <%= form.submit "Update" %>
+
+<% end %>
+
+  
