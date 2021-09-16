@@ -10,18 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_14_191224) do
+ActiveRecord::Schema.define(version: 2021_09_16_154741) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "authors", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "todo_items", force: :cascade do |t|
-    t.string "author"
     t.string "title"
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "is_done", default: false
+    t.bigint "author_id", null: false
+    t.index ["author_id"], name: "index_todo_items_on_author_id"
   end
 
+  add_foreign_key "todo_items", "authors"
 end

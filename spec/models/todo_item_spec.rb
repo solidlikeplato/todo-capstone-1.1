@@ -1,26 +1,44 @@
 require 'rails_helper'
 
 RSpec.describe TodoItem, type: :model do
-  subject do
-      described_class.new(author: 'Ethan', title: 'wash the car', description: 'it\'s dirty' )
+  before(:each) do
+    @author1 = Author.new(name: "Isaac Asimov")
   end
+  
 
   it "is valid with valid attributes" do
+    subject = described_class.new(
+      author: @author1,
+      title: "I, Robot",
+      description: "The three laws"
+    )
     expect(subject).to be_valid
   end
 
   it "is not valid without an author" do
-    subject.author = nil
+    subject = described_class.new(
+      author: nil,
+      title: "I, Robot",
+      description: "The three laws"
+    )
     expect(subject).to_not be_valid
   end
 
   it "is not valid without an title" do
-    subject.title = nil
+    subject = described_class.new(
+      author: @author1,
+      title: nil,
+      description: "The three laws"
+    )
     expect(subject).to_not be_valid
   end
 
   it "is not valid without an description" do
-    subject.description = nil
+    subject = described_class.new(
+      author: @author1,
+      title: "I, Robot",
+      description: nil
+    )
     expect(subject).to_not be_valid
   end
   

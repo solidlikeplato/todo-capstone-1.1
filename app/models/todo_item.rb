@@ -1,5 +1,5 @@
 class TodoItem < ApplicationRecord
-  validates :author, presence: true
+  belongs_to :author
   validates :description, presence: true
   validates :title, presence: true
 end
