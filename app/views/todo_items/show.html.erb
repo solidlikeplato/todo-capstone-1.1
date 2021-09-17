@@ -16,3 +16,8 @@
   <%= @todo_item.description %> 
 <p>
 <%= button_to "Update description", change_description_todo_item_path(@todo_item.id), method: :get %>
+
+<p>
+<%= button_to "Delete Item", todo_item_path(@todo_item), params: {author_id: @todo_item.author.id}, method: :delete, data: {confirm: "Are you sure?"} %>
+
+
