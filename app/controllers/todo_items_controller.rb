@@ -1,11 +1,16 @@
 class TodoItemsController < ApplicationController
-  before_action :set_author, only: [:create, :new]
+  before_action :set_author, only: [:create, :new, :destroy]
   before_action :set_todo_item, except: [:create, :new]
 
   def show
   end
 
   def new
+  end
+
+  def destroy
+    @todo_item.destroy
+    redirect_to @author
   end
 
   def create
