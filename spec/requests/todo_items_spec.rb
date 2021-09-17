@@ -34,7 +34,8 @@ RSpec.describe 'TodoItems', type: :request do
   it 'changes the title on patch request' do
     author1 = FactoryBot.create(:author, name: "John Steinbeck")
     item1 = FactoryBot.create(:todo_item, author: author1, title: "Of Mice and Men", description: "George and Lenny", is_done: true)
-    patch "/todo_items/#{item1.id}", params: {title: "East of Eden"}
+    patch "/todo_items/#{item1.id}", params: {
+      todo_item: {title: "East of Eden"}}
     follow_redirect!
 
     expect(response).to render_template(:show)
@@ -52,7 +53,9 @@ RSpec.describe 'TodoItems', type: :request do
   it 'changes the description on patch request' do
     author1 = FactoryBot.create(:author, name: "John Steinbeck")
     item1 = FactoryBot.create(:todo_item, author: author1, title: "Of Mice and Men", description: "George and Lenny", is_done: true)
-    patch "/todo_items/#{item1.id}", params: {description: "the Trasks and the Hamiltons"}
+    patch "/todo_items/#{item1.id}", params: {
+      todo_item: {description: "the Trasks and the Hamiltons"}
+      }
     follow_redirect!
 
     expect(response).to render_template(:show)
