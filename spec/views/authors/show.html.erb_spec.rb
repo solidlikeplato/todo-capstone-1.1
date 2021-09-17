@@ -27,7 +27,6 @@ RSpec.describe "authors/show.html.erb" do
 
   it 'has a new item button' do
     author1 = FactoryBot.create(:author, name: "Asimov")
-
     assign(:author, author1)
     controller.extra_params = { id: author1.id }
     
