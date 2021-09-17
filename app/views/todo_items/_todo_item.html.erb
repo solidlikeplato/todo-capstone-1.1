@@ -1,1 +1,1 @@
-<p><%= todo_item.is_done ? "done" : "not done" %> <%= todo_item.title %></p>
+<p><%= todo_item.is_done ? "done" : "not done" %> <%= link_to todo_item.title, todo_item_url(id: todo_item.id) %></p>

@@ -1,6 +1,6 @@
 <%= form_with(url: author_todo_items_path, method: "POST",model: @todo_item, author: @author) do |form| %>
-  <%= form.text_field "todo_item[title]", placeholder: "New todo title" %>
-  <%= form.text_field "todo_item[description]", placeholder: "New todo description" %>
+  <%= form.text_field :title, placeholder: "New todo title" %>
+  <%= form.text_field :description, placeholder: "New todo description" %>
   <%= form.submit "create" %>
 
 <% end %>
