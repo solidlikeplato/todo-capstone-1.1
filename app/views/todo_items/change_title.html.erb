@@ -2,7 +2,7 @@
   <strong>  Updating the Title </strong>
 </p>
 
-<%= form_with(url: todo_item_path, method: "PATCH", model: @todo_item) do |form| %>
+<%= form_with url: todo_item_path, method: "PATCH", model: @todo_item do |form| %>
   <%= form.text_field :title %>
   <%= form.submit "Update" %>
 

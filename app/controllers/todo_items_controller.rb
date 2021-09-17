@@ -1,8 +1,11 @@
 class TodoItemsController < ApplicationController
-  before_action :set_author, only: [:create]
-  before_action :set_todo_item, except: [:create]
+  before_action :set_author, only: [:create, :new]
+  before_action :set_todo_item, except: [:create, :new]
 
   def show
+  end
+
+  def new
   end
 
   def create
@@ -11,7 +14,8 @@ class TodoItemsController < ApplicationController
   end
 
   def update
-    @todo_item.update!(todo_item_params)
+    @todo_item.update(todo_item_params)
+    
     redirect_to @todo_item
   end
 
@@ -23,13 +27,14 @@ class TodoItemsController < ApplicationController
   private
   def set_todo_item
     @todo_item = TodoItem.find(params[:id])
+    print @todo_item
   end
 
   def set_author
-    @author = Author.find(params[:id])
+    @author = Author.find(params[:author_id])
   end
 
   def todo_item_params
-    params.permit(:title, :description, :author, :is_done)
+    params[:todo_item].permit(:title, :description,:author, :is_done)
   end
 end
