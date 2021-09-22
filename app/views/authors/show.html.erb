@@ -14,3 +14,4 @@
 </div>
 
 <%= button_to "New Item", new_author_todo_item_path(@author), method: :get %>
+<%= button_to "Delete Author", author_path(@author), method: :delete, data: {confirm: "Are you sure?"} %>

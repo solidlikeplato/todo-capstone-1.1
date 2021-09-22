@@ -18,25 +18,26 @@ RSpec.describe "Authors", type: :request do
       expect(response.body).to match /Asimov/
       expect(response.body).to match /Foundation/
     end
-  end
 
-  it 'shows change name form' do
-    author1 = FactoryBot.create(:author, name: "Robert Jordon")
-    get "/authors/#{author1.id}/change_name"
 
-    expect(response).to render_template(:change_name)
-  end
+    it 'shows change name form' do
+      author1 = FactoryBot.create(:author, name: "Robert Jordon")
+      get "/authors/#{author1.id}/change_name"
 
-  it 'changes name on patch request' do
-  author1 = FactoryBot.create(:author, name: "Robert Jordon")
+      expect(response).to render_template(:change_name)
+    end
 
-  patch "/authors/#{author1.id}", params: {
-    author: {name: "Brandon Sanderson"}}
-  follow_redirect!
+    it 'changes name on patch request' do
+      author1 = FactoryBot.create(:author, name: "Robert Jordon")
 
-  expect(response).to render_template(:show)
-  expect(response.body).to match /Brandon Sanderson/
-  expect(response.body).to_not match /Robert Jordon/
+      patch "/authors/#{author1.id}", params: {
+        author: {name: "Brandon Sanderson"}}
+      follow_redirect!
+
+      expect(response).to render_template(:show)
+      expect(response.body).to match /Brandon Sanderson/
+      expect(response.body).to_not match /Robert Jordon/
+    end
   end
 
   describe 'index page' do
@@ -44,7 +45,18 @@ RSpec.describe "Authors", type: :request do
       get '/'
 
       expect(response).to render_template('index')
+    end
 
+    it 'should redirect to the authors index page on author delete' do
+      author1 = FactoryBot.create(:author, name: "Robert Jordon")
+      author2 = FactoryBot.create(:author, name: "Brandon Sanderson")
+
+      delete "/authors/#{author1.id}"
+      follow_redirect!
+
+      expect(response).to render_template(:index)
+      expect(response.body).to match /Brandon Sanderson/
+      expect(response.body).to_not match /Robert Jordon/
     end
   end
 end

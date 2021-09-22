@@ -1,5 +1,5 @@
 class AuthorsController < ApplicationController
-  before_action :set_author, only: [ :show, :update, :change_name]
+  before_action :set_author, only: [ :show, :update, :change_name, :destroy]
   
   def show
   end
@@ -7,6 +7,12 @@ class AuthorsController < ApplicationController
   def index
     @authors = Author.all
   end
+
+  def destroy
+    @author.destroy
+    redirect_to '/'
+  end
+
 
   def change_name
   end
