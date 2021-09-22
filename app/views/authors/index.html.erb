@@ -1,0 +1,19 @@
+<h1>Welcome to the To Do list app</h1>
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @authors.each do |author| %>
+      <tr>
+        <td><%= author.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
