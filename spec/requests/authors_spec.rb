@@ -17,6 +17,14 @@ RSpec.describe "Authors", type: :request do
 
       expect(response.body).to match /Asimov/
       expect(response.body).to match /Foundation/
+    end
+  end
+
+  describe 'index page' do
+    it 'should render the authors index page for root' do
+      get '/'
+
+      expect(response).to render_template('index')
 
     end
   end

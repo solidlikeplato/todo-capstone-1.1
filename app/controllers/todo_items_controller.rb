@@ -32,7 +32,6 @@ class TodoItemsController < ApplicationController
   private
   def set_todo_item
     @todo_item = TodoItem.find(params[:id])
-    print @todo_item
   end
 
   def set_author

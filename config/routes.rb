@@ -17,4 +17,6 @@ Rails.application.routes.draw do
       get :change_description
     end
   end
+
+  root "authors#index"
 end
