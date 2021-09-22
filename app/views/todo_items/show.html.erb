@@ -19,5 +19,3 @@
 
 <p>
 <%= button_to "Delete Item", todo_item_path(@todo_item), params: {author_id: @todo_item.author.id}, method: :delete, data: {confirm: "Are you sure?"} %>
-
-
