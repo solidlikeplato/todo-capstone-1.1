@@ -7,6 +7,8 @@
   </strong>
 </p>
 
+<%= button_to "Update Name", change_name_author_path(@author.id), method: :get %>
+
 <div id="todo_items_wrapper">
  <%= render @author.todo_items %>
 </div>

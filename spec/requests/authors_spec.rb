@@ -20,6 +20,25 @@ RSpec.describe "Authors", type: :request do
     end
   end
 
+  it 'shows change name form' do
+    author1 = FactoryBot.create(:author, name: "Robert Jordon")
+    get "/authors/#{author1.id}/change_name"
+
+    expect(response).to render_template(:change_name)
+  end
+
+  it 'changes name on patch request' do
+  author1 = FactoryBot.create(:author, name: "Robert Jordon")
+
+  patch "/authors/#{author1.id}", params: {
+    author: {name: "Brandon Sanderson"}}
+  follow_redirect!
+
+  expect(response).to render_template(:show)
+  expect(response.body).to match /Brandon Sanderson/
+  expect(response.body).to_not match /Robert Jordon/
+  end
+
   describe 'index page' do
     it 'should render the authors index page for root' do
       get '/'

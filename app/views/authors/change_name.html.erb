@@ -1,0 +1,11 @@
+<p>
+  <strong>  Updating the Name for <%= @author.name %> </strong>
+</p>
+
+<%= form_with(url: author_path, method: "PATCH", model: @author) do |form| %>
+  <%= form.text_area :name %>
+  <%= form.submit "Update" %>
+
+<% end %>
+
+  

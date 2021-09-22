@@ -34,4 +34,14 @@ RSpec.describe "authors/show.html.erb" do
 
     expect(rendered).to match /New Item/
   end
+
+  it 'has a update name button' do
+    author1 = FactoryBot.create(:author, name: "Asimov")
+    assign(:author, author1)
+    controller.extra_params = { id: author1.id }
+    
+    render(template:'authors/show')
+
+    expect(rendered).to match /Update Name/
+  end
 end
