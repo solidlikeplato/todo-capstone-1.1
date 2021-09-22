@@ -12,7 +12,7 @@
   <tbody>
     <% @authors.each do |author| %>
       <tr>
-        <td><%= author.name %></td>
+        <td><%= link_to author.name, author %></td>
       </tr>
     <% end %>
   </tbody>

@@ -20,4 +20,15 @@ RSpec.describe "authors/index.html.erb" do
     expect(rendered).to match /Asimov/
     expect(rendered).to match /Heinlen/
   end
+
+  it 'contains links to all authors' do
+    author1 = FactoryBot.create(:author, id: 1, name: "Asimov")
+    author2 = FactoryBot.create(:author, id: 2, name: "Heinlen")
+    assign(:authors, Author.all)
+
+    render
+
+    expect(rendered).to match /a href="\/authors\/1"/
+    expect(rendered).to match /a href="\/authors\/2"/
+  end
 end
