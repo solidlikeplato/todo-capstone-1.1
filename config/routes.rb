@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   resources :authors do
     resources :todo_items do
@@ -21,5 +23,5 @@ Rails.application.routes.draw do
     end
   end
 
-  root "authors#index"
+  root 'authors#index'
 end
