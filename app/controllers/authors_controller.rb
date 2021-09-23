@@ -13,7 +13,7 @@ class AuthorsController < ApplicationController
 
   def destroy
     @author.destroy
-    redirect_to '/'
+    redirect_to "/"
   end
 
   def new; end
