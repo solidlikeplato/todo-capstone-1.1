@@ -2,6 +2,7 @@ class AuthorsController < ApplicationController
   before_action :set_author, only: [ :show, :update, :change_name, :destroy]
   
   def show
+    @todo_items = @author.todo_items
   end
 
   def index
@@ -39,4 +40,5 @@ class AuthorsController < ApplicationController
     def author_params
       params.require(:author).permit(:name)
     end
+  
 end
