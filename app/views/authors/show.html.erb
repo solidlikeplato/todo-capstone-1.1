@@ -10,7 +10,8 @@
 <%= button_to "Update Name", change_name_author_path(@author.id), method: :get %>
 
 <div id="todo_items_wrapper">
- <%= render @author.todo_items %>
+ <%= button_to "Sort by done status", @author, method: :get, params: { sort: "is_done" } %>
+ <%= render @todo_items.order(params[:sort]) %>
 </div>
 
 <%= button_to "New Item", new_author_todo_item_path(@author), method: :get %>

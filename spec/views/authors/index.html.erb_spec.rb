@@ -1,6 +1,16 @@
 require 'spec_helper'
 
 RSpec.describe "authors/index.html.erb" do
+  before do
+    author1 = FactoryBot.create(:author,
+      id: 1,
+      name: "Asimov"
+    )
+    author2 = FactoryBot.create(:author,
+      id: 2,
+      name: "Heinlen"
+    )
+  end
 
   it 'displays the welcome message' do
     assign(:authors, Author.all)
@@ -11,8 +21,6 @@ RSpec.describe "authors/index.html.erb" do
   end
 
   it 'renders all authors' do
-    author1 = FactoryBot.create(:author, id: 1, name: "Asimov")
-    author2 = FactoryBot.create(:author, id: 2, name: "Heinlen")
     assign(:authors, Author.all)
 
     render
@@ -22,8 +30,6 @@ RSpec.describe "authors/index.html.erb" do
   end
 
   it 'contains links to all authors' do
-    author1 = FactoryBot.create(:author, id: 1, name: "Asimov")
-    author2 = FactoryBot.create(:author, id: 2, name: "Heinlen")
     assign(:authors, Author.all)
 
     render
