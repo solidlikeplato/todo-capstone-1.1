@@ -1,12 +1,12 @@
+# frozen_string_literal: true
+
 class TodoItemsController < ApplicationController
-  before_action :set_author, only: [:create, :new, :destroy]
-  before_action :set_todo_item, except: [:create, :new]
+  before_action :set_author, only: %i[create new destroy]
+  before_action :set_todo_item, except: %i[create new]
 
-  def show
-  end
+  def show; end
 
-  def new
-  end
+  def new; end
 
   def destroy
     @todo_item.destroy
@@ -20,7 +20,7 @@ class TodoItemsController < ApplicationController
 
   def update
     @todo_item.update(todo_item_params)
-    
+
     redirect_to @todo_item
   end
 
@@ -30,6 +30,7 @@ class TodoItemsController < ApplicationController
   end
 
   private
+
   def set_todo_item
     @todo_item = TodoItem.find(params[:id])
   end
@@ -39,6 +40,6 @@ class TodoItemsController < ApplicationController
   end
 
   def todo_item_params
-    params[:todo_item].permit(:title, :description,:author, :is_done)
+    params[:todo_item].permit(:title, :description, :author, :is_done)
   end
 end

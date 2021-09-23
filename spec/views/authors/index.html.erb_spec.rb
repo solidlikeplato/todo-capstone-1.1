@@ -1,15 +1,15 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
-RSpec.describe "authors/index.html.erb" do
+RSpec.describe 'authors/index.html.erb' do
   before do
-    author1 = FactoryBot.create(:author,
-      id: 1,
-      name: "Asimov"
-    )
-    author2 = FactoryBot.create(:author,
-      id: 2,
-      name: "Heinlen"
-    )
+    FactoryBot.create(:author,
+                      id: 1,
+                      name: 'Asimov')
+    FactoryBot.create(:author,
+                      id: 2,
+                      name: 'Heinlen')
   end
 
   it 'displays the welcome message' do
@@ -34,7 +34,7 @@ RSpec.describe "authors/index.html.erb" do
 
     render
 
-    expect(rendered).to match /a href="\/authors\/1"/
-    expect(rendered).to match /a href="\/authors\/2"/
+    expect(rendered).to match %r{a href="/authors/1"}
+    expect(rendered).to match %r{a href="/authors/2"}
   end
 end

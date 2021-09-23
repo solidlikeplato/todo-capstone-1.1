@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class AuthorsController < ApplicationController
-  before_action :set_author, only: [ :show, :update, :change_name, :destroy]
-  
+  before_action :set_author, only: %i[show update change_name destroy]
+
   def show
     @todo_items = @author.todo_items
   end
@@ -14,11 +16,9 @@ class AuthorsController < ApplicationController
     redirect_to '/'
   end
 
-  def new
-  end
+  def new; end
 
-  def change_name
-  end
+  def change_name; end
 
   def create
     @author = Author.new(author_params)
@@ -28,17 +28,17 @@ class AuthorsController < ApplicationController
 
   def update
     @author.update(author_params)
-    
+
     redirect_to @author
   end
 
   private
-    def set_author
-      @author = Author.find(params[:id])
-    end
 
-    def author_params
-      params.require(:author).permit(:name)
-    end
-  
+  def set_author
+    @author = Author.find(params[:id])
+  end
+
+  def author_params
+    params.require(:author).permit(:name)
+  end
 end
