@@ -59,4 +59,13 @@ RSpec.describe "Authors", type: :request do
       expect(response.body).to_not match /Robert Jordon/
     end
   end
+
+  describe 'new author page' do
+    it 'should render the new item template' do
+
+      get '/authors/new'
+
+      expect(response).to render_template('new')
+    end
+  end
 end

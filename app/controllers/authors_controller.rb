@@ -13,8 +13,16 @@ class AuthorsController < ApplicationController
     redirect_to '/'
   end
 
+  def new
+  end
 
   def change_name
+  end
+
+  def create
+    @author = Author.new(author_params)
+    @author.save
+    redirect_to @author
   end
 
   def update

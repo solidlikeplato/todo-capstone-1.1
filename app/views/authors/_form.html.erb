@@ -1,0 +1,5 @@
+<%= form_with(url: authors_path, method: "POST", model: @author) do |form| %>
+  <%= form.text_field "author[name]", placeholder: "Enter author name" %>
+  <%= form.submit "Create new author" %>
+
+<% end %>
